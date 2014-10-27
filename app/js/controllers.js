@@ -4,7 +4,7 @@
 var app = angular.module('phonecatApp',[ ]);
 
 app.controller('PhoneListCtrl', function($scope) {
-    this.phones = [
+    $scope.phones = [
 	{'name': 'Nexus S',
 	 'snippet': 'Fast just got faster with Nexus S.'},
 	{'name': 'Motorola XOOM with Wi-Fi',
