@@ -6,10 +6,11 @@ exports.config = {
   ],
 
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'phantomjs',
+    'phantomjs.binary.path': require('phantomjs').path
   },
 
-  chromeOnly: true,
+  chromeOnly: false,
 
   baseUrl: 'http://localhost:8000/',
 
