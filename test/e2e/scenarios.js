@@ -16,6 +16,14 @@ describe('Phone list view', function() {
       expect(phonelist.count()).not.toBeLessThan(0);
   });
   
+  it('should filter the phone list as a user types into the search box', function() {
+      var phonelist = element.all(by.repeater('phone in phonelist.phones'));
+      var query = element(by.model('query'));
+
+      query.sendKeys('nexus');
+      expect(phonelist.count()).toBe(1);
+  });
+
 });
 
 });
