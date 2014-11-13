@@ -18,7 +18,7 @@ describe('PhoneListCtrl', function() {
       var scope = {}, 
       ctrl = $controller('PhoneListCtrl', {$scope:scope});
 
-      expect(scope.phones.length).toBe(3);
+      expect(ctrl.phones.length).toBe(3);
 
   }));
 
