@@ -8,8 +8,12 @@ describe('Phone list view', function() {
 
   beforeEach(function() {
     browser.get('app/index.html');
+    console.log('\nbeforeEach: call me in scenarios.js.');
   });
 
+  afterEach(function() {
+
+  });
 
   it('should list phones', function() {
       var phonelist = element.all(by.repeater('phone in phonelist.phones'));

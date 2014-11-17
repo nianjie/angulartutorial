@@ -1,4 +1,7 @@
 exports.config = {
+  
+  seleniumArgs: ['-log selenium.log'],
+
   allScriptsTimeout: 11000,
 
   specs: [
@@ -7,7 +10,8 @@ exports.config = {
 
   capabilities: {
     'browserName': 'phantomjs',
-    'phantomjs.binary.path': require('phantomjs').path
+    'phantomjs.binary.path': require('phantomjs').path,
+    'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
   },
 
   chromeOnly: false,
