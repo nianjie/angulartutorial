@@ -11,7 +11,8 @@ exports.config = {
   capabilities: {
     'browserName': 'phantomjs',
     'phantomjs.binary.path': require('phantomjs').path,
-    'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
+    'phantomjs.cli.args':['--logfile=phantomjs.log', '--loglevel=DEBUG', '--proxy=proxy.jmas.co.jp:8080'],
+    'phantomjs.ghostdriver.cli.args': ['--logfile=phantomjs.log', '--loglevel=DEBUG', '--proxy=proxy.jmas.co.jp:8080']
   },
 
   chromeOnly: false,
