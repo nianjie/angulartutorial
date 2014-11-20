@@ -20,7 +20,10 @@ exports.config = {
 
   framework: 'jasmine',
 
-  jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000
-  }
+    jasmineNodeOpts: {
+        isVerbose: true,
+        showColors: true,
+        includeStackTrace: true,
+        defaultTimeoutInterval: 30000
+    }
 };
