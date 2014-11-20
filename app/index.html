@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en" ng-app="phonecatApp">
+<html lang="en" ng-app="phonecatApp" ng-controller="PhoneListCtrl as phonelist">
 <head>
   <meta charset="utf-8">
-  <title>Google Phone Gallery</title>
+  <title>Google Phone Gallery: {{query}}</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
   <script src="bower_components/angular/angular.js"></script>
   <script src="js/controllers.js"></script>
 </head>
-<body ng-controller="PhoneListCtrl as phonelist">
+<body>
 
   <div class="col-md-2">
     <!--Sidebar content-->
