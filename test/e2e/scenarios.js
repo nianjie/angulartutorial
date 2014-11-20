@@ -3,11 +3,11 @@
 /* http://docs.angularjs.org/guide/dev_guide.e2e-testing */
 
 describe('PhoneCat App', function() {
-
+    var driver = browser.driver;
 describe('Phone list view', function() {
 
   beforeEach(function() {
-    browser.get('app/index.html');
+    driver.get('app/index.html');
     console.log('\nbeforeEach: call me in scenarios.js.');
   });
 
