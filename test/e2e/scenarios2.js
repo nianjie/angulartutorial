@@ -85,6 +85,17 @@ describe('Phone list view', function() {
 
     });
 
+    it('should render phone specific links', function() {
+	query.sendKeys('dell');
+	
+	element.all(by.css('.phones li a')).first().click();
+	browser.getLocationAbsUrl().then(function(url) {
+	    expect(url.split('#')[1]).toBe('/phones/dell-streak-7');
+	});
+
+	
+    });
+
 });
 
 });
