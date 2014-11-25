@@ -1,3 +1,4 @@
+
 'use strict';
 
 /* http://docs.angularjs.org/guide/dev_guide.e2e-testing */
@@ -54,6 +55,36 @@ describe('Phone list view', function() {
 	]);
 
     });
+
+    it('should sort phone order in reversed order', function() {
+	var phoneNameColumn = element.all(by.repeater(repeater).column('phone.name'));
+	
+	function getNames(a) {
+	    console.log('getNames():' + a);
+	    return phoneNameColumn.map(function(elm) {
+		return elm.getText();
+	    });
+	}
+
+	query.sendKeys('tablet');
+
+	element(by.model('phonelist.orderProp')).element(by.css('option[value="age"]')).click();
+	var newestOrder = getNames(1).then(function(ary){
+	    console.log('ary : ' + ary);
+	    return ary.reverse();
+	});
+
+	console.log('newestOrder:' + newestOrder.toString());
+	element(by.model('phonelist.orderProp')).element(by.css('option[value="-age"]')).click();
+	expect(getNames(2).
+	       then(function(ary){
+		   console.log('ary : ' + ary);
+		   return ary; // you have to return a value otherwise undefined will be returned.
+	       })).
+	toEqual(newestOrder);
+
+    });
+
 });
 
 });
