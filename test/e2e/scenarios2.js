@@ -96,6 +96,26 @@ describe('Phone list view', function() {
 	
     });
 
+    it('should show json code', function() {
+	var phones = require('../../app/phones/phones');
+	var expectedJson = phones.forEach(function(val, index) {
+	    if (val.id.equal('dell streak 7')) {
+		return val;
+	    }
+	});
+	query.sendKeys('dell streak 7');
+
+	var pre = element(by.binding('{{phonelist.phones | filter:query | orderBy:phonelist.orderPorp | json}}'));
+	pre.then(function(val) {
+	    console.log('value :' + val);
+	    return val;
+	});
+	pre.getText().then(function(txt) {
+	    console.log("text : " + txt);
+	});
+	expect(pre.getText()).toBe(expectedJson);
+    });
+
 });
 
 });
