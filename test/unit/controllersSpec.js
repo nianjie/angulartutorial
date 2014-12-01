@@ -37,3 +37,19 @@ describe('PhoneListCtrl', function() {
   });
 
 });
+
+describe('PhoneDetailCtrl', function() {
+    var scope, routeParam, ctrl;
+
+    beforeEach(module('phonecatControllers'));
+
+    beforeEach(inject(function($controller) {
+	scope = {};
+	routeParam = {'phoneId':'phoneid-1'};
+	ctrl = $controller('PhoneDetailCtrl', {$scope:scope, $routeParams:routeParam});
+    }));
+
+    it('should set the value of phoneId property', function() {
+	expect(ctrl.phoneId).toBe('phoneid-1');
+    });
+});
