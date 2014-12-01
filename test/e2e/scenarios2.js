@@ -98,10 +98,13 @@ describe('Phone list view', function() {
 
     it('should show json code', function() {
 	var phones = require('../../app/phones/phones');
-	var expectedJson = phones.forEach(function(val, index) {
-	    if (val.id.equal('dell streak 7')) {
-		return val;
+	var expectedJson;
+	phones.every(function(val, index) {
+	    if (val.id == 'dell-streak-7') {
+		expectedJson = val;
+		return false;
 	    }
+	    return true;
 	});
 	query.sendKeys('dell streak 7');
 
