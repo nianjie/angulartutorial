@@ -13,7 +13,7 @@ describe('controllers', function() {
 describe('PhoneListCtrl', function() {
   var scope, ctrl, $httpBackend;
 
-  beforeEach(module('phonecatApp'));
+  beforeEach(module('phonecatControllers'));
 
   beforeEach(inject(function($controller, _$httpBackend_) {
       $httpBackend = _$httpBackend_;
