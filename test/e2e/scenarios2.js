@@ -115,8 +115,8 @@ describe('Phone list view', function() {
 	});
 	pre.getText().then(function(txt) {
 	    console.log("text : " + txt);
+	    expect(JSON.parse(txt)[0]).toEqual(expectedJson);
 	});
-	expect(pre.getText()).toBe(expectedJson);
     });
 
 });
