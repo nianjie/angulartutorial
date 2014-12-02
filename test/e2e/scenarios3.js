@@ -7,18 +7,21 @@ describe('PhoneCat App', function() {
     var repeater = 'phone in phonelist.phones';
     
     describe('Phone list view', function() {
-    	beforeEach(function() {
-	    driver.get('app/phones');
+
+	beforeEach(function() {
+	    driver.get('app/index.html');// access url instead of app/phones
 	});
-	
+
     	it('should list all phones', function() {
 	    var expectedList = require('../../app/phones/phones');
 	    
-	    var elements = element.all(by.repeater(repeater));
+	    var actualList = element.all(by.repeater(repeater));
 	    
-	    elements.count().then(function(count) {
+	    actualList.count().then(function(count) {
 		expect(count).toBe(expectedList.length);
+		return count;
 	    });
+
 	});
     });
 
