@@ -12,8 +12,10 @@ function($scope, $http) {
     this.orderProp = 'age';
 }]);
 
-phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams',
-function($scope, $routeParams) {
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http', 
+function($scope, $routeParams, $http) {
     var self = this;
-    this.phoneId = $routeParams.phoneId;
+    $http.get('phones/'+$routeParams.phoneId + '.json').success(function(data) {
+	self.phone = data;
+    });
 }]);
