@@ -21,9 +21,6 @@ describe('Phone list view', function() {
 
 
   it('should display the current filter value in the title bar', function() {
-      var phones = require('../../app/phones/phones');
-      expect(phonelist.count()).toBe(phones.length);
-      
       query.clear();
       expect(browser.getTitle()).toMatch(/Google Phone Gallery:\s*$/);
       
