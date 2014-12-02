@@ -23,9 +23,6 @@ describe('Phone list view', function() {
   it('should display the current filter value in the title bar', function() {
       query.clear();
       expect(browser.getTitle()).toMatch(/Google Phone Gallery:\s*$/);
-      
-      query.sendKeys('motorola');
-      expect(browser.getTitle()).toMatch(/Google Phone Gallery: motorola$/);
   });
 
     it('should be possible to control phone order via the drop down select box', function() {
