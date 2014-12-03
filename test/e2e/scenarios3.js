@@ -32,12 +32,13 @@ describe('PhoneCat App', function() {
     });
 
     describe('Phone detail view', function() {
+	var phoneId = 'dell-streak-7';
 	beforeEach(function() {
-	    driver.get('app/index.html#/phones/dell-streak-7');
+	    driver.get('app/index.html#/phones/' + phoneId );
 	});
 
-	it('should display a placeholder page with phoneId', function() {
-	    expect(element(by.binding('phoneId')).getText()).toEqual('dell-streak-7');
+	it('should display the page detailing the phone ' + phoneId, function() {
+	    expect(element(by.css('h1')).getText()).toEqual('Dell Streak 7');
 	});
 	
     });
