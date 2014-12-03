@@ -41,6 +41,12 @@ describe('PhoneCat App', function() {
 	    expect(element(by.css('h1')).getText()).toEqual('Dell Streak 7');
 	});
 	
+	it('should display images of the phone ' + phoneId, function() {
+	    var expectedImgs = require('../../app/phones/' + phoneId).images;
+
+	    var imgs = element.all(by.repeater('img in phone.phone.images')).all(by.css('img'));
+	    expect(imgs.count()).toBe(expectedImgs.length);
+	});
     });
 
 });
