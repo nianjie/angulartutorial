@@ -47,6 +47,20 @@ describe('PhoneCat App', function() {
 	    var imgs = element.all(by.repeater('img in phone.phone.images')).all(by.css('img'));
 	    expect(imgs.count()).toBe(expectedImgs.length);
 	});
+
+	it('should swap images of the phone ' + phoneId, function() {
+            var mainImg = element(by.css('.phone'));
+            var imgs = element.all(by.repeater('img in phone.phone.images')).all(by.css('img'));
+            imgs.then(function(items){
+                console.log('items.length:' + items.length);
+                for(var i = 0; i<items.length; i++) {
+                    items[i].click();
+                    expect(mainImg.getAttribute('src')).toEqual(items[i].getAttribute('src'));
+                };
+                return items;
+            });
+        });
+
     });
 
 });
