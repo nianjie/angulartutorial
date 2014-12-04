@@ -5,7 +5,7 @@ exports.config = {
   allScriptsTimeout: 11000,
 
   specs: [
-    'e2e/*.js'
+    'e2e/scenarios3.js'
   ],
 
   capabilities: {

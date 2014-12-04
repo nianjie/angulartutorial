@@ -47,6 +47,28 @@ describe('PhoneCat App', function() {
 	    var imgs = element.all(by.repeater('img in phone.phone.images')).all(by.css('img'));
 	    expect(imgs.count()).toBe(expectedImgs.length);
 	});
+
+	it('should swap images of the phone ' + phoneId, function() {
+	    var mainImg = element(by.css('.phone'));
+	    var imgs = element.all(by.repeater('img in phone.phone.images')).all(by.css('img'));
+/*	    imgs.count().then(function(length){
+		for(var i = 0; i++; i<length) {
+		    imgs[i].click().then(function() {
+			console.log('main:' + mainImg.src + 'img:' + imgs[i].src);
+			expect(mainImg.src).toEqual(imgs[i].src);
+		    });
+		};
+	    });*/ // however this snippet dose not work as expected.
+	    imgs.then(function(items){
+		console.log('items.length:' + items.length);
+		for(var i = 0; i<items.length; i++) {
+		    items[i].click();
+		    expect(mainImg.getAttribute('src')).toEqual(items[i].getAttribute('src'));
+		};
+		return items;
+	    });
+	});
+
     });
 
 });
