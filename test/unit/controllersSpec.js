@@ -34,7 +34,7 @@ describe('controllers', function() {
 
     describe('PhoneDetailCtrl', function() {
 	var scope, routeParam, ctrl, $httpBackend;
-	var thePhone = {name: 'Dell Streak 7'}, thePhoneId='dell-streak-7';
+	var thePhone = {name: 'Dell Streak 7', images:['url1', 'url2','url3']}, thePhoneId='dell-streak-7';
 
 	beforeEach(module('phonecatControllers'));
 
@@ -55,6 +55,22 @@ describe('controllers', function() {
 	    var expectedPhone = thePhone;
 	    expect(ctrl.phone).toEqual(expectedPhone);
 	});
+
+	it('should has mainImageUrl property ', function() {
+	    var expectedPhone = thePhone;
+	    expect(ctrl.mainImageUrl).toBeUndefined();
+	    $httpBackend.flush();
+	    expect(ctrl.mainImageUrl).toBe(expectedPhone.images[0]);
+	});
+
+	it('should set mainImageUrl property ', function() {
+	    var expectedPhone = thePhone;
+	    expect(ctrl.setImage).toBeDefined();
+	    $httpBackend.flush();
+	    ctrl.setImage(thePhone.images[1]);
+	    expect(ctrl.mainImageUrl).toBe(expectedPhone.images[1]);
+	});
+
     });
 
 });
