@@ -2,7 +2,18 @@
 
 /* jasmine specs for controllers go here */
 
-describe('controllers', function() {
+describe('PhoneCat controllers', function() {
+
+    beforeEach(function() {
+	this.addMatchers({
+	    toEqualData: function(expected) {
+		return angular.equals(this.actual, expected);
+	    }
+	});
+    });
+
+    beforeEach(module('phonecatApp'));
+    beforeEach(module('phonecatServices'));
 
     describe('PhoneListCtrl', function() {
 	var scope, ctrl, $httpBackend;
@@ -18,11 +29,11 @@ describe('controllers', function() {
 	    ctrl = $controller('PhoneListCtrl', {$scope:scope});
 	}));
 
-	it("should create 'phones' model with 3 phones", function() {
-	    expect(ctrl.phones).toBeUndefined();
+	it("should create 'phones' model with 2 phones", function() {
+	    expect(ctrl.phones).toEqualData([]);
 	    $httpBackend.flush();
 
-	    expect(ctrl.phones).toEqual([{name:'Nexus S'}, {name:'Motorola DROID'}]);
+	    expect(ctrl.phones).toEqualData([{name:'Nexus S'}, {name:'Motorola DROID'}]);
 
 	});
 
@@ -49,11 +60,11 @@ describe('controllers', function() {
 	}));
 
 	it('should has the specification of phone ' + thePhoneId, function() {
-	    expect(ctrl.phone).toBeUndefined();
+	    expect(ctrl.phone).toEqualData({});
 	    $httpBackend.flush();
 
 	    var expectedPhone = thePhone;
-	    expect(ctrl.phone).toEqual(expectedPhone);
+	    expect(ctrl.phone).toEqualData(expectedPhone);
 	});
 
 	it('should has mainImageUrl property ', function() {
