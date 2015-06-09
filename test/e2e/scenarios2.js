@@ -26,7 +26,7 @@ describe('Phone list view', function() {
   });
 
     it('should be possible to control phone order via the drop down select box', function() {
-	var phoneNameColumn = element.all(by.repeater(repeater).column('{{phone.name}}'));
+	var phoneNameColumn = element.all(by.repeater(repeater).column('phone.name'));
 
 	function getNames() {
 	    return phoneNameColumn.map(function(elm) {
@@ -41,11 +41,11 @@ describe('Phone list view', function() {
 	    'Dell Venue'
 	]);
 
-	element(by.model('phonelist.orderProp')).element(by.css('option[value="name"]')).click();
+	element(by.model('phonelist.orderProp')).element(by.css('option[value="-age"]')).click();
 
 	expect(getNames()).toEqual([
-	    'Dell Streak 7',
-	    'Dell Venue'
+	    'Dell Venue',
+	    'Dell Streak 7'
 	]);
 
     });
@@ -84,7 +84,7 @@ describe('Phone list view', function() {
 	
 	element.all(by.css('.phones li a')).first().click();
 	browser.getLocationAbsUrl().then(function(url) {
-	    expect(url.split('#')[1]).toBe('/phones/dell-streak-7');
+	    expect(url).toBe('/phones/dell-streak-7');
 	});
 
 	
@@ -102,7 +102,7 @@ describe('Phone list view', function() {
 	});
 	query.sendKeys('dell streak 7');
 
-	var pre = element(by.binding('{{phonelist.phones | filter:query | orderBy:phonelist.orderPorp | json}}'));
+	var pre = element(by.binding('phonelist.phones | filter:query | orderBy:phonelist.orderPorp | json'));
 	pre.then(function(val) {
 	    console.log('value :' + val);
 	    return val;
