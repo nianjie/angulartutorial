@@ -9,8 +9,9 @@ describe('PhoneCat App', function() {
     it('should redirect index.html to index.html#/phones', function() {
 	driver.get('app/');
 	browser.getLocationAbsUrl().then(function(url) {
-	    expect(url.split('#')[1]).toBe('/phones');
+	    expect(url).toBe('/phones');
 	});
+	expect(browser.getLocationAbsUrl()).toBe('/phones');
     });
 
     describe('Phone list view', function() {
